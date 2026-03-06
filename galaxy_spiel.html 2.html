@@ -1,98 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Galaxy Book6 Serie - Highlight Quiz</title>
-
-<link rel="stylesheet" href="galaxy_spiel.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Book6 Serie - Highlight Quiz</title>
+    <link rel="stylesheet" href="galaxy_spiel.css">
 </head>
-
 <body>
 
-<h1>Galaxy Book6 Serie</h1>
-<p class="subtitle">Ordne die Features dem richtigen Modell zu</p>
+    <h1>Galaxy Book6 Serie</h1>
+    <p class="subtitle">Ordne die Features dem richtigen Modell zu</p>
 
-<div class="game-container">
+    <div class="game-container">
+        <div class="drop-zone" data-target="pro">
+            <h2>Galaxy Book6 Ultra | Pro</h2>
+            <div class="icon-large">💻</div>
+        </div>
 
-<div class="drop-zone" data-target="pro">
-<h2>Galaxy Book6 Ultra | Pro</h2>
-<div class="icon-large">💻</div>
-</div>
+        <div class="drop-zone" data-target="both">
+            <h2>Gemeinsame Highlights</h2>
+            <div class="icon-medium">🤝</div>
+        </div>
 
-<div class="drop-zone" data-target="both">
-<h2>Gemeinsame Highlights</h2>
-<div class="icon-medium">🤝</div>
-</div>
+        <div class="drop-zone" data-target="standard">
+            <h2>Galaxy Book6</h2>
+            <div class="icon-large">💻</div>
+        </div>
+    </div>
 
-<div class="drop-zone" data-target="standard">
-<h2>Galaxy Book6</h2>
-<div class="icon-large">💻</div>
-</div>
+    <div class="highlights-pool" id="pool">
+        <div class="highlight" draggable="true" id="h1" data-correct="both">Premium Design</div>
+        <div class="highlight" draggable="true" id="h2" data-correct="both">Galaxy AI Select</div>
+        <div class="highlight" draggable="true" id="h3" data-correct="both">Storage Share</div>
+        <div class="highlight" draggable="true" id="h4" data-correct="standard">IPS-Display</div>
+        <div class="highlight" draggable="true" id="h5" data-correct="pro">Dynamic AMOLED 2X Display</div>
+        <div class="highlight" draggable="true" id="h6" data-correct="pro">Bis zu 30 Std. Nutzungsdauer</div>
+        <div class="highlight" draggable="true" id="h7" data-correct="pro">Haptisches Touchpad</div>
+        <div class="highlight" draggable="true" id="h8" data-correct="pro">Klarer Surround-Sound</div>
+        <div class="highlight" draggable="true" id="h9" data-correct="standard">Bis zu 18 Std. Nutzungsdauer</div>
+        <div class="highlight" draggable="true" id="h10" data-correct="pro">1000 Nits Spitzenhelligkeit</div>
+        <div class="highlight" draggable="true" id="h11" data-correct="pro">63% Akku nach 30 Min.</div>
+    </div>
 
-</div>
+    <button type="button" onclick="location.reload()">Spiel zurücksetzen</button>
 
-<div class="highlights-pool" id="pool">
+    <script>
+        const highlights = document.querySelectorAll('.highlight');
+        const zones = document.querySelectorAll('.drop-zone');
 
-<div class="highlight" draggable="true" id="h1" data-correct="both">Premium Design</div>
-<div class="highlight" draggable="true" id="h2" data-correct="both">Galaxy AI Select</div>
-<div class="highlight" draggable="true" id="h3" data-correct="both">Storage Share</div>
-<div class="highlight" draggable="true" id="h4" data-correct="standard">IPS-Display</div>
-<div class="highlight" draggable="true" id="h5" data-correct="pro">Dynamic AMOLED 2X Display</div>
-<div class="highlight" draggable="true" id="h6" data-correct="pro">Bis zu 30 Std. Nutzungsdauer</div>
-<div class="highlight" draggable="true" id="h7" data-correct="pro">Haptisches Touchpad</div>
-<div class="highlight" draggable="true" id="h8" data-correct="pro">Klarer Surround-Sound</div>
-<div class="highlight" draggable="true" id="h9" data-correct="standard">Bis zu 18 Std. Nutzungsdauer</div>
-<div class="highlight" draggable="true" id="h10" data-correct="pro">1000 Nits Spitzenhelligkeit</div>
-<div class="highlight" draggable="true" id="h11" data-correct="pro">63% Akku nach 30 Min.</div>
+        highlights.forEach((highlight) => {
+            highlight.addEventListener('dragstart', (event) => {
+                event.dataTransfer.setData('text/plain', highlight.id);
+            });
+        });
 
-</div>
+        zones.forEach((zone) => {
+            zone.addEventListener('dragover', (event) => {
+                event.preventDefault();
+                zone.classList.add('hover');
+            });
 
-<button onclick="location.reload()">Spiel zurücksetzen</button>
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('hover');
+            });
 
-<script>
-const highlights = document.querySelectorAll('.highlight');
-const zones = document.querySelectorAll('.drop-zone');
+            zone.addEventListener('drop', (event) => {
+                event.preventDefault();
+                zone.classList.remove('hover');
 
-highlights.forEach(h => {
-h.addEventListener('dragstart', (e) => {
-e.dataTransfer.setData('text/plain', h.id);
-});
-});
+                const id = event.dataTransfer.getData('text/plain');
+                const element = document.getElementById(id);
 
-zones.forEach(zone => {
+                const correctZone = element.dataset.correct;
+                const targetZone = zone.dataset.target;
 
-zone.addEventListener('dragover', (e) => {
-e.preventDefault();
-zone.classList.add('hover');
-});
+                element.classList.remove('correct', 'incorrect');
 
-zone.addEventListener('dragleave', () => {
-zone.classList.remove('hover');
-});
+                if (correctZone === targetZone) {
+                    element.classList.add('correct');
+                } else {
+                    element.classList.add('incorrect');
+                }
 
-zone.addEventListener('drop', (e) => {
-
-e.preventDefault();
-zone.classList.remove('hover');
-
-const id = e.dataTransfer.getData('text/plain');
-const element = document.getElementById(id);
-
-const correctZone = element.getAttribute('data-correct');
-const targetZone = zone.getAttribute('data-target');
-
-element.classList.toggle('correct', correctZone === targetZone);
-element.classList.toggle('incorrect', correctZone !== targetZone);
-
-zone.appendChild(element);
-
-});
-
-});
-</script>
+                zone.appendChild(element);
+            });
+        });
+    </script>
 
 </body>
 </html>

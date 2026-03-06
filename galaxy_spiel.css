@@ -1,217 +1,168 @@
-/* Samsung Fonts */
+@font-face {
+    font-family: "Samsung SS Body";
+    src: url("fonts/SamsungSSBody-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
 
 @font-face {
-font-family: "SamsungOne";
-src: url("fonts/SamsungOne-400.woff2") format("woff2");
-font-weight: 400;
+    font-family: "Samsung SS Body";
+    src: url("fonts/SamsungSSBody-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-font-family: "SamsungOne";
-src: url("fonts/SamsungOne-300.woff2") format("woff2");
-font-weight: 300;
+    font-family: "Samsung SS Body";
+    src: url("fonts/SamsungSSBody-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
 }
 
-:root{
---samsung-blue:#035096;
---ultra-bg:#1a1a1a;
---success:#2ecc71;
---error:#e74c3c;
+:root {
+    --samsung-blue: #035096;
+    --success: #2ecc71;
+    --error: #e74c3c;
 }
 
-body{
-
-font-family:"SamsungOne","Segoe UI",Roboto,sans-serif;
-
-background-color:#000;
-color:white;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-
-padding:40px 20px;
-margin:0;
-
+body {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 0;
 }
 
-h1{
-font-weight:300;
-letter-spacing:1px;
-margin-bottom:5px;
+h1 {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
 }
 
-.subtitle{
-color:#888;
-margin-bottom:30px;
+.subtitle {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    color: #888;
+    margin: 0 0 30px 0;
 }
 
-.game-container{
-
-display:flex;
-gap:25px;
-
-width:100%;
-max-width:1200px;
-
-justify-content:center;
-
+.game-container {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.drop-zone{
-
-background-color:#111;
-
-border:1px solid #333;
-
-border-radius:20px;
-
-width:350px;
-min-height:550px;
-
-padding:25px;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-
-transition:all .3s ease;
-
+.drop-zone {
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 20px;
+    width: 350px;
+    min-height: 550px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-.drop-zone.hover{
-
-border-color:var(--samsung-blue);
-
-box-shadow:0 0 20px rgba(3,80,150,.4);
-
+.drop-zone.hover {
+    border-color: var(--samsung-blue);
+    box-shadow: 0 0 20px rgba(3, 80, 150, 0.4);
 }
 
-.drop-zone h2{
-
-font-size:1.1rem;
-
-text-align:center;
-
-margin-bottom:20px;
-
-min-height:50px;
-
-display:flex;
-align-items:center;
-
+.drop-zone h2 {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0 0 20px 0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
 }
 
-.highlights-pool{
-
-background:linear-gradient(145deg,#111,#000);
-
-padding:30px;
-
-border-radius:20px;
-
-width:100%;
-max-width:900px;
-
-margin-top:40px;
-
-display:flex;
-flex-wrap:wrap;
-
-gap:12px;
-
-justify-content:center;
-
-border:1px solid #222;
-
+.icon-large {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
-.highlight{
-
-background:#222;
-
-color:#eee;
-
-padding:12px 18px;
-
-border-radius:50px;
-
-cursor:grab;
-
-font-size:.85rem;
-
-border:1px solid #444;
-
-transition:.2s;
-
+.icon-medium {
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
-.highlight:hover{
-
-border-color:#777;
-background:#2a2a2a;
-
+.highlights-pool {
+    background: linear-gradient(145deg, #111, #000);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    border: 1px solid #222;
+    box-sizing: border-box;
 }
 
-.highlight:active{
-
-cursor:grabbing;
-scale:.95;
-
+.highlight {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    background-color: #222;
+    color: #eee;
+    padding: 12px 18px;
+    border-radius: 50px;
+    cursor: grab;
+    font-size: 0.85rem;
+    border: 1px solid #444;
+    transition: all 0.2s ease;
+    user-select: none;
 }
 
-.highlight.correct{
-
-background:rgba(46,204,113,.2);
-border-color:var(--success);
-color:var(--success);
-
+.highlight:hover {
+    border-color: #777;
+    background-color: #2a2a2a;
 }
 
-.highlight.incorrect{
-
-background:rgba(231,76,60,.2);
-border-color:var(--error);
-color:var(--error);
-
+.highlight:active {
+    cursor: grabbing;
+    transform: scale(0.95);
 }
 
-button{
-
-margin-top:40px;
-
-padding:12px 30px;
-
-background:white;
-
-border:none;
-
-border-radius:50px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
-
+.highlight.correct {
+    background-color: rgba(46, 204, 113, 0.2);
+    border-color: var(--success);
+    color: var(--success);
 }
 
-button:hover{
-
-background:#ccc;
-
+.highlight.incorrect {
+    background-color: rgba(231, 76, 60, 0.2);
+    border-color: var(--error);
+    color: var(--error);
 }
 
-.icon-large{
-
-font-size:50px;
-margin-bottom:20px;
-
+button {
+    font-family: "Samsung SS Body", "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    margin-top: 40px;
+    padding: 12px 30px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.icon-medium{
-
-font-size:40px;
-margin-bottom:20px;
-
+button:hover {
+    background-color: #ccc;
 }
